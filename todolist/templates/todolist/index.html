@@ -1,0 +1,50 @@
+<html lang="ko">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>To-Do</title>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="page-header">
+                <h1>Todo List</h1>
+            </div>
+        </div>
+    <hr>
+        <div class="content">
+            <div class="messageDiv">
+                <form action="./createTodo/" method="POST">{% csrf_token %}
+                    <div class="input-group">
+                        <input id="todoContent" name="todoContent" type="text" class="form-control" placeholder="메모할 내용을 적어주세요">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="submit">메모하기!</button>
+                        </span>
+                    </div>
+                </form>
+            </div>
+            <div class="toDoDiv">
+                <ul class="list-group">
+                    {% for todo in todos %}
+                    <form action="./deleteTodo" method="GET">
+                        <div class="input-group" name='todo1'>
+                            <li class="list-group-item">{{ todo.content }}</li>
+                            <input type="hidden" id="todoNum" name="todoNum" value="{{ todo.id }}"></input>
+                            <span class="input-group-addon">
+                                <button type="submit" class="custom-btn btn btn-danger">완료</button>
+                            </span>
+                        </div>
+                    </form>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    <hr>
+    </div>
+    <div class="footer">
+        <p>2024 - 1 오픈 소스 소프트웨어 활용 2분반 <small>Django</small><br> 컴퓨터공학과 3220159 김현수</p>
+    </div>
+</body>
+</html>

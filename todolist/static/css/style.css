@@ -1,0 +1,32 @@
+head, body{
+    width: 1000px;
+    margin: auto;
+}
+.header{
+    text-align: center;
+    vertical-align: center;
+}
+.header{
+    background: grey;
+}
+.content{
+    height: 500px;
+}
+.messageDiv{
+    text-align: center;
+}
+.btn-default{
+    background: deepskyblue;
+    width: 100px;
+    height: 50px;
+}
+.btn-danger{
+        background: red;
+}
+#todoContent{
+    width: 400px;
+    height: 50px;
+}
+.footer{
+    background: grey;
+}
