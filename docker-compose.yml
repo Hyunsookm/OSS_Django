@@ -1,0 +1,33 @@
+version: '2'
+
+services:
+  db:
+    image: mysql:8.3.0
+    container_name: 'mysql'
+    environment:
+      MYSQL_DATABASE: oss
+      MYSQL_ROOT_PASSWORD: 1q2w3e4r!
+    ports:
+      - "3306:3306"
+
+
+  web:
+    build: .
+    command:
+      python3 manage.py runserver 0.0.0.0:8000
+    image: django:4.2.11
+    container_name: 'django'
+    ports:
+      - "8000:8000"
+    restart:
+      always
+    environment:
+      - MYSQL_HOST=db
+      - MYSQL_PORT=3306
+      - MYSQL_DATABASE=oss
+      -
+
+
+
+
+

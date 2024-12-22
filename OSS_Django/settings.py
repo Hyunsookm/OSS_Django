@@ -43,8 +43,7 @@ ROOT_URLCONF = 'OSS_Django.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates']
-        ,
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -59,17 +58,19 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'OSS_Django.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'oss',
+        'USER': 'root',
+        'PASSWORD': '1q2w3e4r!',
+        'HOST': 'db',
+        'PORT': '3306',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
@@ -106,7 +107,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR,'todolist', 'static')
+    os.path.join(BASE_DIR, 'todolist', 'static')
 ]
-STATIC_ROOT=os.path.join(BASE_DIR, 'static')
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
